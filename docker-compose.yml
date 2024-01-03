@@ -1,0 +1,28 @@
+version: "1.0.0"
+
+services:
+  web:
+    image: php:7.4-apache
+    container_name: apache-php-container
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:latest
+    container_name: mariadb-container
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: rmit_store_db
+      MYSQL_USER: db_admin
+      MYSQL_PASSWORD: rmit_password
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  dbdata:

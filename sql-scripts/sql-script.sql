@@ -1,5 +1,5 @@
-CREATE USER 'db_admin'@'localhost' IDENTIFIED BY 'rmit_password';
-GRANT ALL PRIVILEGES ON *.* TO 'db_admin'@'localhost';
+CREATE USER 'db_admin'@'44.210.193.33' IDENTIFIED BY 'rmit_password';
+GRANT ALL PRIVILEGES ON *.* TO 'db_admin'@'44.210.193.33';
 FLUSH PRIVILEGES;
 
 CREATE DATABASE rmit_store_db;
