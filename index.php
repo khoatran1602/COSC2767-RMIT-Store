@@ -90,7 +90,7 @@
             <div class="row rmit-product-section">
               <?php
               $link = mysqli_connect(
-                  "44.219.102.6",
+                  "44.219.102.6", // Mariadb IP
                   "db_admin",
                   "rmit_password",
                   "rmit_store_db"
