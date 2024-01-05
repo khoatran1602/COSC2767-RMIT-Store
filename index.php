@@ -85,12 +85,12 @@
 
         <section class="rmit-store-section row">
             <div class="check_tittle wow fadeInUp" data-wow-delay="0.4s" id="item-list">
-                <h2>Our Stores</h2>
+                <h2>Our Store</h2>
             </div>
             <div class="row rmit-product-section">
               <?php
               $link = mysqli_connect(
-                  "44.219.102.6:8081", // Mariadb IP
+                  "44.219.102.6:8081", // Mariadb IP. Must put a suffix :8081 port number if hosted on Docker
                   "db_admin",
                   "rmit_password",
                   "rmit_store_db"
