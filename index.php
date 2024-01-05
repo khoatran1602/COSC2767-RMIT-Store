@@ -89,7 +89,6 @@
             </div>
             <div class="row rmit-product-section">
               <?php
-              phpinfo();
               $link = mysqli_connect(
                   "44.219.102.6", // Mariadb IP
                   "db_admin",
