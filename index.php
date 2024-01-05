@@ -90,10 +90,10 @@
             <div class="row rmit-product-section">
               <?php
               $link = mysqli_connect(
-                  "44.219.102.6", // Mariadb IP
+                  "44.219.102.6:8081", // Mariadb IP
                   "db_admin",
-                  "rmit_store_db",
-                  "rmit_password"
+                  "rmit_password",
+                  "rmit_store_db"
               );
               if ($link) {
                   $res = mysqli_query($link, "select * from store;");
