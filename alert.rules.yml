@@ -1,0 +1,42 @@
+groups:
+  - name: apache_monitoring
+    rules:
+      # High request latency
+      - alert: HighRequestLatency
+        expr: apache_request_duration_seconds{quantile="0.5"} > 1
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: High request latency detected
+          description: "The Apache server is experiencing a latency higher than 1 second for more than 1 minute."
+
+      # High error rate
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: High error rate detected
+          description: "More than 10% of the HTTP requests resulted in an error in the last 5 minutes."
+
+      # High CPU usage
+      - alert: HighCpuUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: High CPU usage detected
+          description: "CPU usage is over 80% for more than 10 minutes."
+
+      # High memory usage
+      - alert: HighMemoryUsage
+        expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 20
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: High memory usage detected
+          description: "Available memory is less than 20% for more than 10 minutes."

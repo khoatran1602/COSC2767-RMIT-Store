@@ -1,28 +1,70 @@
-version: "3"
+version: "3.8"
 
 services:
   web:
-    image: php:7.4-apache
-    container_name: apache-php-container
+    image: cosc2767-rmit-store-prod
+    build: ./Dockerfile
     volumes:
       - ./:/var/www/html
     ports:
       - "80:80" # Host:Container
     depends_on:
       - db
+    networks:
+      - monitoring
 
   db:
-    image: mariadb:latest
-    container_name: mariadb-container
+    image: s3847766/random-team-1-mariadb
     environment:
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_ROOT_PASSWORD: rmit_password
       MYSQL_DATABASE: rmit_store_db
       MYSQL_USER: db_admin
       MYSQL_PASSWORD: rmit_password
     volumes:
       - dbdata:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "8081:3306"
+    networks:
+      - monitoring
+
+  prometheus:
+    image: s3847766/random-team-1-prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alert.rules.yml:/etc/prometheus/alert.rules.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+
+  grafana:
+    image: s3847766/random-team-1-grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring
+
+  alertmanager:
+    image: s3847766/random-team-1-alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
+    networks:
+      - monitoring
+
+  node_exporter:
+    image: prom/node-exporter
+    ports:
+      - "9100:9100"
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
 
 volumes:
   dbdata:

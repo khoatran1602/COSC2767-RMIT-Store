@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "apache"
+    metrics_path: "/server-status"
+    static_configs:
+      - targets: ["34.199.112.171:80"]
+    scheme: http # or https if your server uses SSL
