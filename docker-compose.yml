@@ -3,7 +3,7 @@ version: "3.8"
 services:
   web:
     image: cosc2767-rmit-store-prod
-    build: ./Dockerfile
+    build: .
     volumes:
       - ./:/var/www/html
     ports:
