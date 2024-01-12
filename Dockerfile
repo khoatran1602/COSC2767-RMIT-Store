@@ -1,4 +1,12 @@
-#Write Dockerfile for apache image to deploy a simple website
+#   RMIT University Vietnam
+#   Course: COSC2767 Systems Deployment and Operations
+#   Semester: 2023B
+#   Assessment: Assignment 3
+#   Author: Random Team 1
+#   ID: 3847766
+#   Created date: 22/1/2024
+#   Last modified: 22/1/2024
+#   Acknowledgement: Tutorial, ChatGPT, Stackoverflow, AWS Documentation
 
 FROM php:7.2-apache
 

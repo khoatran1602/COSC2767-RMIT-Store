@@ -2,8 +2,7 @@ version: "3.8"
 
 services:
   web:
-    image: cosc2767-rmit-store-prod
-    build: .
+    image: s3847766/cosc2767-rmit-store
     volumes:
       - ./:/var/www/html
     ports:
@@ -64,7 +63,7 @@ services:
 
 networks:
   monitoring:
-    driver: bridge
+    driver: overlay
 
 volumes:
   dbdata:
