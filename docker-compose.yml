@@ -63,7 +63,7 @@ services:
 
 networks:
   rmit-store_monitoring:
-    driver: bridge
+    driver: overlay
 
 volumes:
   dbdata:
