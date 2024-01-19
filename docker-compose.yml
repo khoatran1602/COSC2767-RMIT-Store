@@ -13,7 +13,7 @@ services:
       - monitoring
 
   db:
-    image: s3847766/random-team-1-mariadb
+    image: s3847766/random-team-1-mariadb-prod
     environment:
       MYSQL_ROOT_PASSWORD: rmit_password
       MYSQL_DATABASE: rmit_store_db
