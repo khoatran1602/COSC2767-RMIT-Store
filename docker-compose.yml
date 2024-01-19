@@ -10,7 +10,7 @@ services:
     depends_on:
       - db
     networks:
-      - monitoring
+      - rmit-store_monitoring
 
   db:
     image: s3847766/random-team-1-mariadb-prod
@@ -24,7 +24,7 @@ services:
     ports:
       - "8081:3306"
     networks:
-      - monitoring
+      - rmit-store_monitoring
 
   prometheus:
     image: s3847766/random-team-1-prometheus
@@ -34,7 +34,7 @@ services:
     ports:
       - "9090:9090"
     networks:
-      - monitoring
+      - rmit-store_monitoring
 
   grafana:
     image: s3847766/random-team-1-grafana
@@ -43,7 +43,7 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - monitoring
+      - rmit-store_monitoring
 
   alertmanager:
     image: s3847766/random-team-1-alertmanager
@@ -52,7 +52,7 @@ services:
     ports:
       - "9093:9093"
     networks:
-      - monitoring
+      - rmit-store_monitoring
 
   node_exporter:
     image: prom/node-exporter
@@ -62,7 +62,7 @@ services:
       - monitoring
 
 networks:
-  monitoring:
+  rmit-store_monitoring:
     driver: bridge
 
 volumes:
