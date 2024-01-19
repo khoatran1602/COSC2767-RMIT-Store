@@ -90,7 +90,7 @@
             <div class="row rmit-product-section">
               <?php
               $link = mysqli_connect(
-                  "54.146.26.230:8081", // Mariadb IP. Must put a suffix :8081 port number if hosted on Docker
+                  "44.195.95.46:8081", // Mariadb IP. Must put a suffix :8081 port number if hosted on Docker
                   "db_admin",
                   "rmit_password",
                   "rmit_store_db"
