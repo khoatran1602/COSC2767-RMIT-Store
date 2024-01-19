@@ -7,6 +7,10 @@ services:
       - ./:/var/www/html
     ports:
       - "80:80" # Host:Container
+    deploy:
+      placement:
+        constraints:
+          - node.labels.role == store
     depends_on:
       - db
     networks:
@@ -23,6 +27,10 @@ services:
       - dbdata:/var/lib/mysql
     ports:
       - "8083:3306"
+    deploy:
+      placement:
+        constraints:
+          - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
@@ -33,6 +41,10 @@ services:
       - ./alert.rules.yml:/etc/prometheus/alert.rules.yml
     ports:
       - "9090:9090"
+    deploy:
+      placement:
+        constraints:
+          - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
@@ -42,6 +54,10 @@ services:
       GF_SECURITY_ADMIN_PASSWORD: admin
     ports:
       - "3000:3000"
+    deploy:
+      placement:
+        constraints:
+          - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
@@ -51,6 +67,10 @@ services:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
     ports:
       - "9093:9093"
+    deploy:
+      placement:
+        constraints:
+          - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
@@ -58,6 +78,10 @@ services:
     image: prom/node-exporter
     ports:
       - "9100:9100"
+    deploy:
+      placement:
+        constraints:
+          - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
