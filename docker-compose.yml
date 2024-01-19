@@ -59,7 +59,7 @@ services:
     ports:
       - "9100:9100"
     networks:
-      - monitoring
+      - rmit-store_monitoring
 
 networks:
   rmit-store_monitoring:
