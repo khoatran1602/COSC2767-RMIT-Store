@@ -22,7 +22,7 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
     ports:
-      - "8081:3306"
+      - "8083:3306"
     networks:
       - rmit-store_monitoring
 
