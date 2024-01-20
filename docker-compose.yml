@@ -9,9 +9,9 @@ services:
       - "80:80" # Host:Container
     deploy:
       replicas: 2
-      # placement:
-      #   constraints:
-      #     - node.labels.role == store
+      placement:
+        constraints:
+          - node.labels.role == store
     depends_on:
       - db
     networks:
