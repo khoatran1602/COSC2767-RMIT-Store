@@ -13,7 +13,7 @@ class DatabaseQueryTest extends \PHPUnit\Framework\TestCase {
         // Attempt to connect to the database
         $link = @mysqli_real_connect(
             $mysqli,
-            "54.146.26.230:8081",
+            "44.195.95.46:8081",
             "db_admin",
             "rmit_password",
             "rmit_store_db"
@@ -42,7 +42,7 @@ class DatabaseQueryTest extends \PHPUnit\Framework\TestCase {
         // Attempt to connect to the database
         $link = @mysqli_real_connect(
             $mysqli,
-            "54.146.26.230:8081",
+            "44.195.95.46:8081",
             "db_admin",
             "rmit_password",
             "rmit_store_db"
