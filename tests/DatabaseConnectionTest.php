@@ -3,29 +3,17 @@ use PHPUnit\Framework\TestCase;
 
 class DatabaseConnectionTest extends TestCase {
     public function testDatabaseConnection() {
-        // Set a timeout for the database connection attempt (e.g., 5 seconds)
-        $timeout = 1.5;
+   $link = mysqli_connect(
+     "localhost",
+     "db_admin",
+     "rmit_password",
+     "rmit_store_db"
+   );
 
-        // Use mysqli_init and mysqli_options to set the connection timeout
-        $mysqli = mysqli_init();
-        mysqli_options($mysqli, MYSQLI_OPT_CONNECT_TIMEOUT, $timeout);
 
-        // Attempt to connect to the database
-        $link = @mysqli_real_connect(
-            $mysqli,
-            "44.195.95.46:8081",
-            "db_admin",
-            "rmit_password",
-            "rmit_store_db"
-        );
 
-        // Check if the connection was successful
-        if ($link) {
-            $this->assertInstanceOf(mysqli::class, $mysqli);
-            mysqli_close($mysqli);
-        } else {
-            // Connection attempt failed within the specified timeout
-            $this->fail('Database connection attempt timed out');
-        }
+   $this->assertInstanceOf(mysqli::class, $link);
+   // Checks if $link is an instance of the mysqli class,
+   // which implies a successful database connection.
     }
 }
