@@ -20,6 +20,8 @@ RUN apt-get update && \
     docker-php-ext-install mysqli pdo_mysql && docker-php-ext-enable mysqli && \
     service apache2 restart && systemctl enable apache2
 
+RUN sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+
 COPY . .
 
 EXPOSE 80
