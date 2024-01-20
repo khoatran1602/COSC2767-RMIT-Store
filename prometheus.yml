@@ -16,5 +16,5 @@ scrape_configs:
   - job_name: "apache"
     metrics_path: "/server-status"
     static_configs:
-      - targets: ["34.199.112.171:80"]
+      - targets: ["34.234.46.52:80"]
     scheme: http # or https if your server uses SSL
