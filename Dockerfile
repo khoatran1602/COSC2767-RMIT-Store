@@ -17,12 +17,13 @@ WORKDIR /var/www/html
 RUN apt-get update && \
     rm /etc/apt/preferences.d/no-debian-php && \
     apt-get install -y git php-mysql php-mysqli systemd && \
-    docker-php-ext-install mysqli pdo_mysql && docker-php-ext-enable mysqli && \
-    service apache2 restart && systemctl enable apache2
+    docker-php-ext-install mysqli pdo_mysql && docker-php-ext-enable mysqli
 
 RUN sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
 COPY . .
+
+RUN a2enmod rewrite
 
 RUN chmod -R 755 /var/www/html && \
     chown -R www-data:www-data /var/www/html && \
