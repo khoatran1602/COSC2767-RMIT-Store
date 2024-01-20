@@ -17,25 +17,6 @@ services:
     networks:
       - rmit-store_monitoring
 
-  db:
-    image: s3847766/random-team-1-mariadb-prod
-    environment:
-      MYSQL_ROOT_PASSWORD: rmit_password
-      MYSQL_DATABASE: rmit_store_db
-      MYSQL_USER: db_admin
-      MYSQL_PASSWORD: rmit_password
-    volumes:
-      - dbdata:/var/lib/mysql
-    ports:
-      - "8083:3306"
-    deploy:
-      replicas: 2
-      # placement:
-      #   constraints:
-      #     - node.labels.role == store
-    networks:
-      - rmit-store_monitoring
-
   prometheus:
     image: s3847766/random-team-1-prometheus
     volumes:
