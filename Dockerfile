@@ -10,8 +10,6 @@
 
 FROM php:7.2-apache
 
-USER root
-
 WORKDIR /var/www/html
 
 RUN apt-get update && \
