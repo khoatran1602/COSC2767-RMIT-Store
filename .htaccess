@@ -1,0 +1,13 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Redirect HTTP to HTTPS (Uncomment if you have SSL and want to enforce HTTPS)
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# URL Rewriting Example (Uncomment and modify if needed)
+#RewriteRule ^page/(.*)$ page.php?id=$1 [NC,L]
+
+# Custom Error Documents (Uncomment and modify if needed)
+#ErrorDocument 404 /notfound.html
+#ErrorDocument 500 /servererror.html

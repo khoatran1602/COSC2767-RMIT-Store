@@ -22,6 +22,10 @@ RUN apt-get update && \
 
 RUN sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
+RUN chmod -R 777 /var/www/html && \
+    chown -R www-data:www-data /var/www/html && \
+    chmod -R 755 .htaccess
+
 COPY . .
 
 EXPOSE 80
