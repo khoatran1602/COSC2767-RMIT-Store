@@ -9,9 +9,9 @@ services:
       - "80:80" # Host:Container
     deploy:
       replicas: 2
-      placement:
-        constraints:
-          - node.labels.role == store
+      # placement:
+      #   constraints:
+      #     - node.labels.role == store
     depends_on:
       - db
     networks:
@@ -30,9 +30,9 @@ services:
       - "8083:3306"
     deploy:
       replicas: 2
-      placement:
-        constraints:
-          - node.labels.role == store
+      # placement:
+      #   constraints:
+      #     - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
@@ -45,9 +45,9 @@ services:
       - "9090:9090"
     deploy:
       replicas: 2
-      placement:
-        constraints:
-          - node.labels.role == store
+      # placement:
+      #   constraints:
+      #     - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
@@ -59,9 +59,9 @@ services:
       - "3000:3000"
     deploy:
       replicas: 2
-      placement:
-        constraints:
-          - node.labels.role == store
+      # placement:
+      #   constraints:
+      #     - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
@@ -73,9 +73,9 @@ services:
       - "9093:9093"
     deploy:
       replicas: 2
-      placement:
-        constraints:
-          - node.labels.role == store
+      # placement:
+      #   constraints:
+      #     - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
@@ -85,9 +85,9 @@ services:
       - "9100:9100"
     deploy:
       replicas: 2
-      placement:
-        constraints:
-          - node.labels.role == store
+      # placement:
+      #   constraints:
+      #     - node.labels.role == store
     networks:
       - rmit-store_monitoring
 
