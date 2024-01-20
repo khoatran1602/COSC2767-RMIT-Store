@@ -10,23 +10,23 @@
 
 FROM php:7.2-apache
 
+USER root
+
 WORKDIR /var/www/html
 
-# Install dependencies
 RUN apt-get update && \
-    apt-get install -y git php-mysql php-mysqli && \
-    docker-php-ext-install mysqli pdo_mysql
+    rm /etc/apt/preferences.d/no-debian-php && \
+    apt-get install -y git php-mysql php-mysqli systemd && \
+    docker-php-ext-install mysqli pdo_mysql && docker-php-ext-enable mysqli && \
+    service apache2 restart && systemctl enable apache2
 
-# Configure Apache
 RUN sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 
-# Copy project files
-COPY . .
+RUN chmod -R 755 /var/www/html && \
+    chown -R www-data:www-data /var/www/html && \
+    chmod -R 644 .htaccess
 
-# Set proper permissions
-RUN chown -R www-data:www-data /var/www/html && \
-    find /var/www/html -type d -exec chmod 755 {} \; && \
-    find /var/www/html -type f -exec chmod 644 {} \;
+COPY . .
 
 EXPOSE 80
 
