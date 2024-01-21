@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 class DatabaseConnectionTest extends TestCase {
     public function testDatabaseConnection() {
         $link = mysqli_connect(
-            "44.195.95.46:8081",
+            "54.146.26.230:8081",
             "db_admin",
             "rmit_password",
             "rmit_store_db"
